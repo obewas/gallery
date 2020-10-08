@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 from django.templatetags.static import static
 # Create your views here.
-def index(request):
+def show_photo(request):
     path = settings.MEDIA_ROOT
     img_lst = os.listdir(path + '/images')
     context = {'images' : img_lst}
