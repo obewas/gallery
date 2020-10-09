@@ -1,16 +1,20 @@
 {% extends 'photo/base.html' %}
 
-{% load photo_tags %}
+{% load static %}
 
 {% block body %}
 	<center>
-		<h1>Fav Photo</h1>
+		<h1>My Gallery</h1>
 		<hr>
-		{%for photo in Image%}
-		{{photo.image_name}}
-		{{photo.location}}
-		<img src="{{photo.image_upload}}">
+		<div>
+			{%for photo in all_photos%}
+		<li>{{photo.image_name}}</li>
+		<li>{{photo.description}}</li>
+		<li>{{photo.date_of_upload}}</li>
+		<img src="/media/{{photo.photo_upload}}">
 		{% endfor %}
+		</div>
+
 	</center>
 {% block extra_js %}
 	<script type='text/javascript'>
