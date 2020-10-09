@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Location(models.Model):
@@ -16,13 +16,13 @@ class Category(models.Model):
         return self.cat
 
 class Image(models.Model):
-    image = models.CharField(max_length=50)
-    image_name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='media/', null=True)
     description = models.CharField(max_length=100)
-    date_of_upload = models.DateField(max_length=50, auto_now=True, null=True)
-    photo_upload = models.ImageField(upload_to='media/', null=True)
+    created = models.DateTimeField(max_length=50, auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     @classmethod
     def save_image(cls):
@@ -42,6 +42,12 @@ class Image(models.Model):
         pass
 
 
+class Comment(models.Model):
+    post = models.ForeignKey(Image, on_delete=models.CASCADE)
+    text = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    created = models.DateTimeField(max_length=50, auto_now_add=True)
+    modified = models.DateTimeField(max_length=50, auto_now=True)
 
 
 

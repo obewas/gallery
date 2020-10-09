@@ -11,7 +11,8 @@
 		<li>{{photo.image_name}}</li>
 		<li>{{photo.description}}</li>
 		<li>{{photo.date_of_upload}}</li>
-		<img src="/media/{{photo.photo_upload}}">
+		<img src="/media/{{photo.image.url}}" width="400" height="400">
+		<p><em>{{ photo.created }}</em><br>{{photo.author}}</p>
 		{% endfor %}
 		</div>
 
