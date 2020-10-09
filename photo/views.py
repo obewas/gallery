@@ -1,10 +1,10 @@
 from django.shortcuts import render
-import os
-from django.conf import settings
-from django.templatetags.static import static
+from .models import Image
+
 # Create your views here.
+def upload_photo(request):
+    image = Image
+
 def show_photo(request):
-    path = settings.MEDIA_ROOT
-    img_lst = os.listdir(path + '/images')
-    context = {'images' : img_lst}
-    return render(request, "photo/index.html", context)
+    display = Image.objects.all()
+    return render(request, "photo/index.html",{'Image':display})

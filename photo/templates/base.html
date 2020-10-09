@@ -1,8 +1,13 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html>
     <head>
-        <title>Django - Photo Gallery</title>
+        {% if title %}
+        <title>{{ title }} - Photo Gallery</title>
+        {% else %}
+        <title> Photo Gallery </title>
+        {% endif %}
         <!-- CSS -->
         <link rel="stylesheet" href="{% static 'photo/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'photo/css/simplelightbox.min.css' %}">

@@ -6,6 +6,9 @@ class Location(models.Model):
     geo_tag = models.CharField(max_length=30)
     season = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.geo_tag, self.season
+
 class Category(models.Model):
     cat = models.CharField(max_length=30)
 
@@ -16,12 +19,13 @@ class Image(models.Model):
     image = models.CharField(max_length=50)
     image_name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
-    date_of_upload = models.DateField(max_length=50, auto_now=True)
+    date_of_upload = models.DateField(max_length=50, auto_now=True, null=True)
     photo_upload = models.ImageField(upload_to='media/', null=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
-    def save_image(self):
+    @classmethod
+    def save_image(cls):
         newImage = Image()
         newImage.image = models.ImageField(upload_to='media/', blank=True)
         newImage.save()
