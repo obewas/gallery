@@ -2,27 +2,23 @@
 
 {% load static %}
 
-{% block body %}
-	<center>
-		<h1>My Gallery</h1>
-		<hr>
-		<div>
-			{%for photo in all_photos%}
-		<li>{{photo.image_name}}</li>
-		<li>{{photo.description}}</li>
-		<li>{{photo.date_of_upload}}</li>
-		<img src="/media/{{photo.image.url}}" width="400" height="400">
-		<p><em>{{ photo.created }}</em><br>{{photo.author}}</p>
-		{% endfor %}
+{% block content%}
+<h1>Photo Gallery</h1>
+<div class="row">
+{% for image in Image %}
+<div class="col-md-4">
+	<div class="card mb-2">
+		<img src="{% static photo.image%}" class="card-img-top">
+		<div class="card-body">
+			<h5 class="card-title">{{image.author}}</h5>
+			<p class="card-text">{{image.description}}</p>
+			<a href="{% url 'photo_details' photo.pk %}" class="btn btn-primary"></a>
+
 		</div>
 
-	</center>
-{% block extra_js %}
-	<script type='text/javascript'>
-		$(document).ready(function() {
-			$('.gallery a').simpleLightbox();
-		});
-	</script>
-{% endblock extra_js %}
-{% endblock body %}
+	</div>
 
+</div>
+	{% endfor %}
+</div>
+{% endblock %}

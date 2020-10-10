@@ -1,27 +1,25 @@
-
-<!DOCTYPE html>
+{% load bootstrap3 %}
 {% load static %}
+<!DOCTYPE html>
 <html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Photo Gallery</title>
-        {% else %}
-        <title> Photo Gallery </title>
-        {% endif %}
-        <!-- CSS -->
-        <link rel="stylesheet" href="{% static 'photo/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'photo/css/simplelightbox.min.css' %}">
-
-        <!-- JAVASCRIPT -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'photo/js/simple-lightbox.min.js' %}"></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> Photo Gallery - {{title}}</title>
+    {% else %}
+    <title> Photos Gallery</title>
+    {% endif %}
+    {% block styles %}
+        {% bootstrap_css%}
+         <link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
+    {% endblock %}
+</head>
     <body>
-	    <div class='container'>
-		    <div class="gallery">
-                {% block body %}{% endblock body %}
-		    </div>
-		</div>
-        {% block extra_js %}{% endblock extra_js %}
+       {% block content %}{% endblock %}
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}
     </body>
+
 </html>

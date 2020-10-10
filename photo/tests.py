@@ -5,6 +5,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 class ImageTestCase(TestCase):
 
     def setUp(self):
-        pass
+        self.image = Image
     def test_save_image(self):
         pass

@@ -1,18 +1,25 @@
 from django.shortcuts import render
-from .models import Image
+from .models import Image, Comment
 from django.views.generic.list import ListView
 # Create your views here.
-class Photolist(ListView):
-    model = Image
-#function that serves the welcome page
-def index(request):
+def photo_index(request):
+    photos = Image.objects.all()
+    context = {"photos": photos}
+    return render(request, 'photo/index.html', context)
 
-    # get all current photo by the latest
-    all_photos = Image.objects.all().order_by('-id')
-    return render(request, 'photo/index.html', {'all_photos':all_photos})
-def upload_photo(request):
-    image = Image
+def photo_details(request, pk):
+    snap = Image.objects.get(pk=pk)
+    comments = Comment.objects.filter(snap=snap)
+    context = {
+        'snap': snap, 'comments': comments
+    }
+    return render(request, 'photo/detail.html', context)
 
-def show_photo(request):
-    display = Image.objects.all()
-    return render(request, 'photo/index.html',{'Image':display})
+def photo_category(request, category):
+    photos = Image.objects.filter(
+        categories_name_contains = category
+    )
+    context = {
+        "category": category, 'photos': photos
+    }
+    return render(request, 'photo/category.html', context)

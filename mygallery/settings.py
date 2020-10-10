@@ -75,7 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mygallery.wsgi.application'
 
 
-# Database
+# Database setup
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
@@ -126,5 +126,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'

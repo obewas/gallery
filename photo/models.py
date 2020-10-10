@@ -11,6 +11,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.cat
+class Comment(models.Model):
+    author = models.CharField(max_length=60)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey('Image', on_delete=models.CASCADE)
 
 class Image(models.Model):
     image = models.ImageField(upload_to='media/', null=True)
@@ -18,8 +23,10 @@ class Image(models.Model):
     created = models.DateTimeField(max_length=50, auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    categories = models.ManyToManyField('Category', related_name='photos')
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return self.image
 
     @classmethod
     def save_image(cls):

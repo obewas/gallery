@@ -6,7 +6,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
-    url(r'', views.index, name='index'),
+    url(r'',views.photo_index, name='viewPhotos'),
+    url(r'<int:pk>/', views.photo_details, name='photo_details'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
