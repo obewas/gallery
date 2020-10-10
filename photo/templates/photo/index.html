@@ -8,7 +8,7 @@
 {% for image in Image %}
 <div class="col-md-4">
 	<div class="card mb-2">
-		<img src="{% static photo.image%}" class="card-img-top">
+		<img src="{% static photo.image.url %}" class="card-img-top">
 		<div class="card-body">
 			<h5 class="card-title">{{image.author}}</h5>
 			<p class="card-text">{{image.description}}</p>

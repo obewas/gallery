@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Image, Comment
+from .models import Image
 from .forms import CommentForm
 from django.views.generic.list import ListView
 # Create your views here.
