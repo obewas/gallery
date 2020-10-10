@@ -8,6 +8,9 @@ urlpatterns = [
     url(r'^admin/',admin.site.urls),
     url(r'',views.photo_index, name='viewPhotos'),
     url(r'<int:pk>/', views.photo_details, name='photo_details'),
+    url(r'<category>/', views.photo_category, name='photo_category'),
+    url(r'<int:pk>/', views.comment_detail, name='comment_detail')
+
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

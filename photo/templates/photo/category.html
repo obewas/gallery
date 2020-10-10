@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-8 offset-md-2">
+    <h1>{{ category | title }}</h1>
+    <hr>
+    {% for photo in photos %}
+        <h2><a href="{% url 'photo_detail' photo.pk%}">{{ photo.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }} |&nbsp;
+            Categories:&nbsp;
+            {% for category in photo.categories.all %}
+            <a href="{% url 'photo_category' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+        </small>
+        <p>{{ photo.body | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}
