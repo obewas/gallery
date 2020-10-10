@@ -6,9 +6,6 @@ class Location(models.Model):
     geo_tag = models.CharField(max_length=30)
     season = models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.geo_tag, self.season
-
 class Category(models.Model):
     cat = models.CharField(max_length=30)
 
