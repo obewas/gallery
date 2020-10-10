@@ -40,4 +40,4 @@ def comment_detail(request, pk):
     context = {
         'photo': photo, 'comments': comments, 'form': form,
     }
-    return render(request, 'photo/comment_detail.html', context)
+    return render(request, 'photo/comment.html', context)
