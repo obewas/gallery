@@ -6,11 +6,11 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
-    url(r'',views.index, name='index'),
+    url(r'',views.index, name='photo/index'),
     url(r'<int:pk>/', views.photo_details, name='photo_details'),
     url(r'<category>/', views.photo_category, name='photo_category'),
 
 
 
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

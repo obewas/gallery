@@ -1,3 +1,4 @@
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
       <div class="col-sm-2">
       {% block sidebar %}
         <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'photo/index' %}">Home</a></li>
           <li><a href="">Photos</a></li>
           <li><a href="">Categories</a></li>
         </ul>
@@ -24,5 +25,9 @@
       <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
     </div>
   </div>
+  {% block scripts %}
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+   {% endblock %}
 </body>
 </html>

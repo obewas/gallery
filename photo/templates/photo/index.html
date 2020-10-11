@@ -1,24 +1,16 @@
-{% extends 'photo/base.html' %}
+{% extends "photo/base.html" %}
 
-{% load static %}
-
-{% block content%}
-<h1>Photo Gallery</h1>
-<div class="row">
-{% for image in Image %}
-<div class="col-md-4">
-	<div class="card mb-2">
-		<img src="{% static photo.image.url %}" class="card-img-top">
-		<div class="card-body">
-			<h5 class="card-title">{{image.author}}</h5>
-			<p class="card-text">{{image.description}}</p>
-			<a href="{% url 'photo_details' photo.pk %}" class="btn btn-primary"></a>
-
-		</div>
-
-	</div>
-
-</div>
-	{% endfor %}
-</div>
+{% block content %}
+  <h1>Gallery Home</h1>
+  <p>Welcome to Gallery </p>
+  <h2>Dynamic content</h2>
+  <p>The gallery has the following record counts:</p>
+  <ul>
+	  {% load static %}
+	  {% for photo in photos %}
+	  <img src="{{ photo.image.url }}" alt="img">
+	  {% endfor %}
+    <li><strong>Number of Photos:</strong> {{ no_of_photos }}</li>
+    <li><strong>Categories:</strong> {{ cat }}</li>
+  </ul>
 {% endblock %}

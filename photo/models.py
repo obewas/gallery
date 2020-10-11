@@ -15,15 +15,14 @@ class Category(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='media/', null=True)
+    image = models.ImageField(upload_to='static', null=True)
     description = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now_add=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
     categories = models.ManyToManyField('Category', related_name='photos')
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    def __str__(self):
-        return self.image
+
 
     @classmethod
     def save_image(cls, ):
