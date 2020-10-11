@@ -9,7 +9,7 @@
     <ul>
 	  {% load static %}
        {% for photo in photos %}
-	  <img src="{{ photo.image.url }}" alt="" width="240">
+	  <img src="{{ photo.image.url }}" alt="" width="240" class="image-responsive">
        {% endfor %}
     <li><strong>Number of Photos:</strong> {{ no_of_photos }}</li>
     <li><strong>Categories:</strong> {{ cat }}</li>

@@ -10,7 +10,6 @@ urlpatterns = [
     url(r'<int:pk>/', views.photo_details, name='photo_details'),
     url(r'<category>/', views.photo_category, name='photo_category'),
 
-
-
-
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
