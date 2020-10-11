@@ -5,12 +5,15 @@
   <p>Welcome to Gallery </p>
   <h2>Dynamic content</h2>
   <p>The gallery has the following record counts:</p>
-  <ul>
+<div id="header">
+    <ul>
 	  {% load static %}
-	  {% for photo in photos %}
-	  <img src="{{ photo.image.url }}" alt="img">
-	  {% endfor %}
+       {% for photo in photos %}
+	  <img src="{{ photo.image.url }}" alt="" width="240">
+       {% endfor %}
     <li><strong>Number of Photos:</strong> {{ no_of_photos }}</li>
     <li><strong>Categories:</strong> {{ cat }}</li>
   </ul>
+</div>
+
 {% endblock %}
