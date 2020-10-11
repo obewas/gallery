@@ -27,9 +27,9 @@ class Image(models.Model):
 
     @classmethod
     def save_image(cls, ):
-        newImage = Image()
-        newImage.image = models.ImageField(upload_to='media/', blank=True)
-        newImage.save()
+        #create a new photo record in gallery
+        new_image = Image()
+        new_image.save()
 
     def delete_image(self):
         snap = Image.objects.get(pk=1)
@@ -37,9 +37,11 @@ class Image(models.Model):
             if os.path.isfile(snap.image.path):
                 os.remove(snap.image.path)
     def update_image(self, request):
-        new_photo = Image(self.image, self.description, self.location, self.categories, self.author)
-        new_photo.save()
+        modify = Image.objects.get(pk=1)
+        modify.image = Image()
+        modify.save()
     def get_image_by_id(self, id):
+        all_images = Image.objects.all(id)
         image_by_id = Image.objects.filter(id=1)
         return image_by_id
 

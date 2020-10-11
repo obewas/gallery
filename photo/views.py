@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from .models import Image
+from .models import Image, Category, Location
 
 
 # Create your views here.
-def photo_index(request):
+def index(request):
+    """View function for home page of site."""
     photos = Image.objects.all().order_by('-created')
-    context = {"photos": photos}
-    return render(request, 'photo/index.html', context)
+    no_of_photos = Image.objects.all().count()
+    cat = Category.objects.all()
+    context = {"photos": photos, 'no_of_photos': no_of_photos, 'cat': cat}
+    return render(request, 'photo/index.html', context=context)
 
 def photo_details(request, pk):
     snap = Image.objects.get(pk=pk)
