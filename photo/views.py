@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404
 def index(request):
     """View function for home page of site."""
     photos = Image.objects.all().order_by('-created')
-    print(photos)
     no_of_photos = Image.objects.all().count()
     context = {"photos": photos, 'no_of_photos': no_of_photos}
     return render(request, 'photo/index.html', context=context)
