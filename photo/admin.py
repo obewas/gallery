@@ -1,6 +1,20 @@
 from django.contrib import admin
-from .models import Image, Category, Location, ChoiceItem
+from .models import Image, Category, Location
 # Register your models here.
-admin.site.register(Image)
-admin.site.register(Category)
-admin.site.register(Location)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['image', 'category', 'location', 'created']
+    ordering = ['-created']
+
+
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ['geo_tag']
+    ordering = ['geo_tag']
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['cat']
+    ordering = ['cat']
+
+admin.site.register(Image, ImageAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Location, LocationAdmin)

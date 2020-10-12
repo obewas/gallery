@@ -8,14 +8,14 @@
   {% load static %}
   {% for photo in photos %}
 <div id="header">
-    <img src="{{ photo.image.url }}" alt="image" width="240" class="image-responsive">
+    <img src="{{ photo.image }}" alt="" width="240" class="image-responsive">
         <p> Created: {{ photo.created }}{{photo.author}}</p>
        {% endfor %}
     <ul>
 
     <li><strong>Number of Photos:</strong> {{ no_of_photos }}</li>
     <li><strong>Created by:</strong> {{ photo.author }}</li>
-    <li><strong>Photos:</strong><img src="{{ photos }}"></li>
+    <li><strong>Photos:</strong><img src="{{ image.photo.url }}"></li>
   </ul>
 </div>
 

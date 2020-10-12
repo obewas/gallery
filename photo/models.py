@@ -21,7 +21,7 @@ class Location(models.Model):
 
 
 class Category(models.Model):
-    cat = models.CharField(max_length=30, unique=True, null=True)
+    cat = models.CharField(max_length=30, null=True)
 
     class Meta:
         ordering = ["cat"]
@@ -29,8 +29,8 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-    def __str__(self):
-        return self.cat
+    #def __str__(self):
+    #    return self.cat
 
 
     def save_category(self):
@@ -46,7 +46,7 @@ class Image(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now_add=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
-    categories = models.ManyToManyField('Category', related_name='photos', choices=[])
+    category = models.ForeignKey(Category, related_name='category',on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:

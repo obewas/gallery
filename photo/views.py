@@ -18,13 +18,14 @@ def single_photo_details(request, pk):
     context = {'photo_detail': photo_detail}
     return render(request, 'photo/detail.html', context)
 
-def photo_category(request, category):
+def photo_category(request, cat):
+
     photos = Image.objects.filter(
-        categories_name_contains = category
+     categories_name_contains = cat
     )
     context = {
-        "category": category, 'photos': photos
-    }
+       "cat": cat, 'photos': photos
+   }
     return render(request, 'photo/category.html', context)
 
 def photo(request, pk):
@@ -66,7 +67,7 @@ def family(request):
     return render(request, 'category/family/family.html', {'family': family})
 
 
-def travel (request):
+def travel(request):
     travel_category = Category.objects.get(pk=3)
     travel = Image.objects.filter(category=travel_category)
     return render(request, 'category/travel/travel.html', {'travel': travel})
