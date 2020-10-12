@@ -1,17 +1,43 @@
 from django.db import models
 from django.contrib.auth.models import User
-import os
+from djchoices import ChoiceItem, DjangoChoices
 # Create your models here.
 class Location(models.Model):
-    geo_tag = models.CharField(max_length=30)
+    geo_tag = models.CharField(max_length=30, unique=True)
+    class Meta:
+        ordering = ['geo_tag']
+        verbose_name = 'Location'
+        verbose_name_plural = 'Locations'
+
     def __str__(self):
         return self.geo_tag
 
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+
+
 class Category(models.Model):
-    cat = models.CharField(max_length=30)
+    cat = models.CharField(max_length=30, unique=True, null=True)
+
+    class Meta:
+        ordering = ["cat"]
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
 
     def __str__(self):
         return self.cat
+
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
 
 
 class Image(models.Model):
@@ -20,37 +46,44 @@ class Image(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now_add=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
-    categories = models.ManyToManyField('Category', related_name='photos')
+    categories = models.ManyToManyField('Category', related_name='photos', choices=[])
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
+    class Meta:
+        ordering = ["created"]
+        verbose_name = "Image"
+        verbose_name_plural = "Images"
 
-    @classmethod
-    def save_image(cls, ):
-        #create a new photo record in gallery
-        new_image = Image()
-        new_image.save()
+    def summary(self):
+        return self.description[:100] + " ......"
+
+    def pub_date_pretty(self):
+        return self.created.strftime('%b %e %Y')
+
+    def save_image(self):
+        self.save()
 
     def delete_image(self):
-        snap = Image.objects.get(pk=1)
-        if snap.image:
-            if os.path.isfile(snap.image.path):
-                os.remove(snap.image.path)
-    def update_image(self, request):
-        modify = Image.objects.get(pk=1)
-        modify.image = Image()
-        modify.save()
-    def get_image_by_id(self, id):
-        all_images = Image.objects.all(id)
-        image_by_id = Image.objects.filter(id=1)
-        return image_by_id
+        self.delete()
 
-
-    def search_image_category(self, category):
-        cat = Image.objects.filter(category)
-
+    def update_image(self):
         pass
-    def filter_by_location(self,location):
+
+    def get_image_by_id(cls):
+        images = cls.objects.get(pk=id)
+        return images
+
+    def search_image(category):
         pass
+
+    def filter_by_location(location):
+        pass
+
+    @classmethod
+    def search_by_category(cls, search_term):
+        searched_images = cls.objects.filter(category__icontains=search_term)
+        return searched_images
+
 
 
 
