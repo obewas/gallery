@@ -6,16 +6,20 @@
 
   <p>The gallery has the following record counts:</p>
   {% load static %}
-  {% for photo in photos %}
+
 <div id="header">
-    <img src="{{ photo.image }}" alt="" width="240" class="image-responsive">
-        <p> Created: {{ photo.created }}{{photo.author}}</p>
+    <div>
+        {% for photo in photos %}
+        <img src="{{ photo.image.url }}" alt="" width="240" class="image-responsive">
+        <p> Created: {{photo.pk}}{{ photo.created }}{{photo.author}}{{photo.location}}</p>
        {% endfor %}
+    </div>
+
     <ul>
 
     <li><strong>Number of Photos:</strong> {{ no_of_photos }}</li>
-    <li><strong>Created by:</strong> {{ photo.author }}</li>
-    <li><strong>Photos:</strong><img src="{{ image.photo.url }}"></li>
+    <li><strong>Created by:</strong> {{ author }}</li>
+    <li><strong>Photos:</strong><img src="{{ photo.image.url }}"></li>
   </ul>
 </div>
 

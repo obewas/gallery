@@ -17,8 +17,8 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'photo/index' %}">Home</a></li>
-          <li><a href="">Photos</a></li>
-          <li><a href="">Categories</a></li>
+          <li><a href="{% url 'photo/photo_category' %}">Photos</a></li>
+          <li><a href="{% url 'photo/single_photo_details'%}">About</a></li>
         </ul>
      {% endblock %}
       </div>
