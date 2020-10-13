@@ -8,6 +8,11 @@ python3.8
 Django (latest version)
 Virtual Environment
 
+Technology Used:
+Django
+HTML
+CSS
+
 
 Running the Application
 Creating the virtual environment
