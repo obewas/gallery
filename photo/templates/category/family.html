@@ -10,6 +10,7 @@
           <h2>Family </h2>
           <div class="row">
           {% for image in family %}
+              <img src="{{ image.image.url }}">
           {% include 'photo/category.html'%}
 
           {% empty %}

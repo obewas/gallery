@@ -10,6 +10,7 @@
           <h2>Technology </h2>
           <div class="row">
           {% for image in technology %}
+              <img src="{{ image.image.url }}">
           {% include 'photo/category.html'%}
 
           {% empty %}

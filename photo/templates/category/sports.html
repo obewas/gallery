@@ -10,6 +10,7 @@
           <h2>Sports </h2>
           <div class="row">
           {% for image in sports %}
+              <img src="{{ image.image.url }}">
           {% include 'photo/category.html'%}
 
           {% empty %}

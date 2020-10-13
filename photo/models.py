@@ -57,6 +57,7 @@ class Image(models.Model):
         verbose_name = "Image"
         verbose_name_plural = "Images"
 
+
     def summary(self):
         return self.description[:100] + " ......"
 

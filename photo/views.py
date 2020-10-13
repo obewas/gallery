@@ -12,9 +12,9 @@ def index(request):
     context = {"photos": photos, 'no_of_photos': no_of_photos}
     return render(request, 'photo/index.html', context=context)
 
-def single_photo_details(request, pk):
+def single_photo_details(request, image_id):
     """return details of single photo"""
-    photo_detail = get_object_or_404(pk=pk)
+    photo_detail = get_object_or_404(Image, pk=image_id)
     context = {'photo_detail': photo_detail}
     return render(request, 'photo/detail.html', context)
 
@@ -53,7 +53,12 @@ def search_category(request):
         message = "You have not searched for any category"
 
         return render(request, 'photo/search.html', {"message": message})
-
+def gallery(request):
+    '''
+    gallery function returns the list of photos in the database
+    '''
+    gallery = Image.objects.all()
+    return render(request, 'photo/gallery.html', {'gallery':gallery})
 
 def sports(request):
     sports_category = Category.objects.get(pk=1)

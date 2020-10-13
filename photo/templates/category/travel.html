@@ -11,6 +11,7 @@
         <h2>Travel</h2>
         <div class="row">
         {% for image in travel %}
+            <img src="{{ image.image.url }}">
         {% include 'photo/category.html'%}
 
         {% empty %}
