@@ -12,8 +12,8 @@
           <br>
           <br>
           <br>
-          {% if images %}
-            <h2>Found {{ photos|length }} of searched category {{message}}</h2>
+          {% if photos %}
+            <h2>Found {{ image|length }} of searched category {{message}}</h2>
           {% else %}
             <h2> Found 0 categories of the search term {{message}}</h2>
           {% endif %}
@@ -26,7 +26,7 @@
           {% for photo in photos %}
             <div class="col-sm-6 col-md-3">
                 <h1>{{photo.name}}</h1>
-                <img src="{{photo.photo.url}}">
+                <img src="{{photo.image.url}}">
             </div>
           {% endfor %}
         {% endif %}

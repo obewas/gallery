@@ -12,6 +12,7 @@
         {% for photo in photos %}
         <img src="{{ photo.image.url }}" alt="" width="240" class="image-responsive">
         <p> Created: {{photo.pk}}{{ photo.created }}{{photo.author}}{{photo.location}}</p>
+        <p>{{photo.description}}</p>
        {% endfor %}
     </div>
 
