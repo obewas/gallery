@@ -48,11 +48,11 @@ def search_category(request):
         searched_images = Image.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html', {"message": message, "images": searched_images})
+        return render(request, 'photo/search.html', {"message": message, "images": searched_images})
     else:
         message = "You have not searched for any category"
 
-        return render(request, 'search.html', {"message": message})
+        return render(request, 'photo/search.html', {"message": message})
 
 
 def sports(request):

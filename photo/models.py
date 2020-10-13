@@ -41,6 +41,7 @@ class Category(models.Model):
 
 
 class Image(models.Model):
+
     image = models.ImageField(upload_to='static/', null=True)
     description = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)

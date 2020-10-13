@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'photo/base.html' %}
 
 {% block content %}
 
@@ -11,8 +11,8 @@
         <h2>Travel</h2>
         <div class="row">
         {% for image in travel %}
-        {% include 'category_detail.html'%}
-        {% include 'modal.html' %}
+        {% include 'photo/category.html'%}
+
         {% empty %}
         <h3>There are currently no images under this category</h3>
         {% endfor %}
