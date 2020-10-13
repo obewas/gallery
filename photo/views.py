@@ -40,7 +40,7 @@ def about_us(request):
     '''
     Function that returns information about the website
     '''
-    return render(request, 'about/about.html')
+    return render(request, 'photo/about.html')
 
 def search_category(request):
     if 'category' in request.GET and request.GET["category"]:
@@ -58,22 +58,22 @@ def search_category(request):
 def sports(request):
     sports_category = Category.objects.get(pk=1)
     sports = Image.objects.all().filter(category=sports_category)
-    return render(request, 'category/sports/sports.html', {'sports': sports})
+    return render(request, 'category/sports.html', {'sports': sports})
 
 
 def family(request):
     family_category = Category.objects.get(pk=2)
     family = Image.objects.filter(category=family_category)
-    return render(request, 'category/family/family.html', {'family': family})
+    return render(request, 'category/family.html', {'family': family})
 
 
 def travel(request):
     travel_category = Category.objects.get(pk=3)
     travel = Image.objects.filter(category=travel_category)
-    return render(request, 'category/travel/travel.html', {'travel': travel})
+    return render(request, 'category/travel.html', {'travel': travel})
 
 
 def technology(request):
     tech_category = Category.objects.get(pk=4)
     tech = Image.objects.filter(category=tech_category)
-    return render(request, 'category/technology/technology.html', {'tech': tech})
+    return render(request, 'category/technology.html', {'tech': tech})
