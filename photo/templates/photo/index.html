@@ -10,9 +10,13 @@
 <div id="header">
     <div>
         {% for photo in photos %}
-        <img src="{{ photo.image.url }}" alt="" width="240" class="image-responsive">
-        <p> Created: {{ photo.created }}{{photo.author}}{{photo.location}}</p>
         <p>{{photo.description}}</p>
+        <img src="{{ photo.image.url }}" alt="" width="240" class="image-responsive">
+        <p>Created: {{ photo.created }}</p>
+        <p>Uploaded by: {{photo.author}}</p>
+        <p>Location: {{photo.location}}</p>
+        <hr>
+
        {% endfor %}
     </div>
 
@@ -23,5 +27,13 @@
     <li><strong>Photos:</strong><img src="{{ photo.image.url }}"></li>
   </ul>
 </div>
+<!--{% for photo in photos%}
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="{{ photo.image.url }}" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="{{ photo.description }}">Add a description of the image here</div>
+</div>
+{% endfor %}-->
 
 {% endblock %}

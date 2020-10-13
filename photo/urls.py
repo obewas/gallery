@@ -6,7 +6,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$',views.index, name='photo/index'),
-    url(r'<int:pk>/', views.single_photo_details, name='photo/single_photo_details'),
+    url(r'<int:image_id>/', views.single_photo_details, name='photo/single_photo_details'),
     url(r'<category>/', views.photo_category, name='photo/photo_category'),
     url(r'<image>/(\d+)', views.photo, name='photo/image'),
     url(r'^gallery/$', views.gallery, name='photo/gallery'),
